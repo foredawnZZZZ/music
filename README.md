@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vue-music
 
 ## Project setup
@@ -27,3 +28,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# music
+vue-music
+>>>>>>> abca6a8282108274b8068dbbb74ebb0703686ff9
