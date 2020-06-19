@@ -25,7 +25,7 @@ export default {
     },
     interval: {
       type: Number,
-      default: 400,
+      default: 4000,
     },
   },
   data() {
@@ -39,16 +39,23 @@ export default {
   mounted() {
     setTimeout(() => {
       this._getWarpperWidth();
-      this._initSilder();
       this._initDots();
+      this._initSilder();
 
       if (this.autoPlay) {
         this._play();
       }
     }, 20);
+    const _this = this;
+    window.addEventListener("resize",() => {
+      if(!this.isScrollDom) {
+        return;
+      }
+      this._getWarpperWidth(true);
+    })
   },
   methods: {
-    _getWarpperWidth() {
+    _getWarpperWidth(isResize) {
       let width = 0;
       let child = this.$refs.sliderGroup.children;
       let sliderWidth = this.$refs.sliderWrapper.clientWidth;
@@ -58,9 +65,9 @@ export default {
         children.style.width = sliderWidth + "px";
         width += sliderWidth;
       }
-      // if(this.loop) {
-      //   width += 2 * sliderWidth
-      // }
+      if(this.loop && !isResize) {
+        width += 2 * sliderWidth
+      }
       this.$refs.sliderGroup.style.width = width + "px";
     },
     _initSilder() {
@@ -74,11 +81,11 @@ export default {
         snapSpeed: 400
       });
       this.isScrollDom.on("scrollEnd", () => {
-        let page = this.isScrollDom.getCurrentPage().pageX;
+        let pageIndex = this.isScrollDom.getCurrentPage().pageX;
         if (this.loop) {
-          page -= 1;
+          pageIndex -= 1;
         }
-        this.currentPage = page;
+        this.currentPage = pageIndex;
         if (this.autoPlay) {
           clearTimeout(this.timer);
           this._play();
