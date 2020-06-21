@@ -14,20 +14,23 @@ module.exports = {
       .set('api', resolve('src/api'))
       .set('common', resolve('src/common'))
   },
-  lintOnSave: false
-  // devServer: {
-  //   open: true,
-  //   host: 'localhost',
-  //   port: 8081,
-  //   https: false,
-  //   proxy: {
-  //     "/api": {
-  //       target: "http://qq.com/",
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         "^/api": ""
-  //       }
-  //     }
-  //   }
-  // }
+  lintOnSave: false,
+  devServer: {
+    open: true,
+    host: 'localhost',
+    port: 8081,
+    proxy: {
+      "/api": {
+        target: "https://c.y.qq.com",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "/"
+        },
+        headers: {
+          "Referer": "https://c.y.qq.com/",
+          "host": 'c.y.qq.com'
+        }
+      }
+    }
+  }
 }

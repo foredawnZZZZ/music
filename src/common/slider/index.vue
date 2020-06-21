@@ -115,7 +115,7 @@ export default {
 @import '~assets/stylus/variable.styl';
 
 .slider 
-  min-height: 1px;
+  min-height: 1px
   .sliderGroup 
     position: relative
     overflow: hidden
@@ -131,23 +131,23 @@ export default {
         overflow: hidden
         text-decoration: none
       img 
-        display: block;
+        display: block
         width: 100%
   .dots 
-    position: absolute;
-    top: 130px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    font-size: 0;
+    position: absolute
+    top: 130px
+    right: 0
+    left: 0
+    bottom: 0
+    text-align: center
+    font-size: 0
     .dot 
-      display: inline-block;
-      margin: 0 4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: $color-text-l;
+      display: inline-block
+      margin: 0 4px
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background: $color-text-l
       &.active
         width: 20px
         border-radius: 5px
