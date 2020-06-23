@@ -28,11 +28,7 @@ export const getDescList = () => {
   })
 
   return axios.get(url,{
-    params:data,
-    headers: {
-      referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
-    }
+    params:data
   }).then(res => {
     return Promise.resolve(res.data)
   })
